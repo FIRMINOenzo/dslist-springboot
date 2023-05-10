@@ -16,7 +16,9 @@ public class Game {
     private String ds_platform;
     private Double nr_score;
     private String ds_img_url;
+    @Column(columnDefinition = "TEXT")
     private String ds_short_description;
+    @Column(columnDefinition = "TEXT")
     private String ds_long_description;
 
     public Game() {
