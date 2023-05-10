@@ -18,7 +18,6 @@ public class GameService {
 
     @Transactional(readOnly = true)
     public List<GameMinDTO> findAll() {
-
         // var == List<Game>
         var result = gameRepository.findAll();
 
@@ -33,5 +32,14 @@ public class GameService {
 
         // Retorna um único game no padrão DTO
         return new GameDTO(result);
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> findByList(Long listId) {
+        // var == List<GameMinProjection>
+        var result = gameRepository.searchByList(listId);
+
+        // retorna uma List<GameMinDTO>
+        return result.stream().map(GameMinDTO::new).toList();
     }
 }
